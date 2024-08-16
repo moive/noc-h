@@ -7,8 +7,11 @@ export class Server {
 		CronService.createJon("*/5 * * * * *", () => {
 			// const date = new Date();
 			// console.log("5 second", date);
-
-			new CheckService().execute("https://google.com");
+			const url = "https://google.com";
+			new CheckService(
+				() => console.log(`${url} is ok`),
+				(error) => console.log(error)
+			).execute(url);
 		});
 	}
 }
