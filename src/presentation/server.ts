@@ -14,15 +14,9 @@ export class Server {
 
 		// Send email
 		const emailService = new EmailService();
-		emailService.sendMail({
-			to: "mvelasquezdeveloper@gmail.com",
-			subject: "Logs System",
-			htmlBody: `
-			<h2>Logs System</h2>
-			<p>This is a email test 🚩</p>
-			<p>See logs attach</p>
-			`,
-		});
+		emailService.sendEmailWithFilesSystemLogs(
+			"mvelasquezdeveloper@gmail.com"
+		);
 
 		// CronService.createJon("*/5 * * * * *", () => {
 		// 	// const date = new Date();
