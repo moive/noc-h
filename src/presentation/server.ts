@@ -13,7 +13,7 @@ export class Server {
 		console.log("Server started...");
 
 		// Send email
-		const emailService = new EmailService();
+		const emailService = new EmailService(fileSystemLogRepository);
 		emailService.sendEmailWithFilesSystemLogs(
 			"mvelasquezdeveloper@gmail.com"
 		);
