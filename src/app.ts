@@ -24,6 +24,6 @@ async function main() {
 	const logs = await LogModel.find({}, { _id: 0, message: 1 });
 	console.log(logs);
 
-	// Server.start();
+	Server.start();
 	// console.log(envs);
 }
