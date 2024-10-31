@@ -1,3 +1,4 @@
+import { LogSeverityLevel } from "../domain/entities/log.entity";
 import { CheckService } from "../domain/use-cases/checks/check.service";
 import { SendEmailLogs } from "../domain/use-cases/email/send-email-logs";
 import { FileSystemDatasource } from "../infrastructure/datasources/file-system.datasource";
@@ -13,7 +14,7 @@ const logRepository = new LogRepositoryImplementation(
 
 const emailService = new EmailService();
 export class Server {
-	public static start() {
+	public static async start() {
 		console.log("Server started...");
 
 		// Send email
@@ -24,16 +25,19 @@ export class Server {
 		// 	"mvelasquezdeveloper@gmail.com"
 		// );
 
-		CronService.createJon("*/5 * * * * *", () => {
-			// const date = new Date();
-			// console.log("5 second", date);
-			// const url = "https://localhost:3000";
-			const url = "https://google.com";
-			new CheckService(
-				logRepository,
-				() => console.log(`${url} is ok`),
-				(error) => console.log(error)
-			).execute(url);
-		});
+		// CronService.createJon("*/5 * * * * *", () => {
+		// 	// const date = new Date();
+		// 	// console.log("5 second", date);
+		// 	// const url = "https://localhost:3000";
+		// 	const url = "https://google.com";
+		// 	new CheckService(
+		// 		logRepository,
+		// 		() => console.log(`${url} is ok`),
+		// 		(error) => console.log(error)
+		// 	).execute(url);
+		// });
+
+		const logs = await logRepository.getLogs(LogSeverityLevel.high);
+		console.log("👉: ", logs);
 	}
 }
