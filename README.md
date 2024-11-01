@@ -10,6 +10,10 @@ MAILER_EMAIL=
 MAILER_SECRET_KEY=
 PROD=false
  ```	
+ 3. Execute the command ```npm install```
+ 4. Get up database with the command
+ ```docker compose up -d```
+
 
  # Prisma
  * ```npx prisma init --datasource-provider PostgreSQL```
