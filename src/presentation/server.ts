@@ -8,8 +8,8 @@ import { CronService } from "./cron/cron.service";
 import { EmailService } from "./email/email.service";
 
 const logRepository = new LogRepositoryImplementation(
-	// new FileSystemDatasource()
-	new MongoLogDatasource()
+	new FileSystemDatasource()
+	// new MongoLogDatasource()
 );
 
 const emailService = new EmailService();
@@ -37,7 +37,7 @@ export class Server {
 		// 	).execute(url);
 		// });
 
-		const logs = await logRepository.getLogs(LogSeverityLevel.high);
+		const logs = await logRepository.getLogs(LogSeverityLevel.medium);
 		console.log("👉: ", logs);
 	}
 }
