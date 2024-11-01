@@ -10,3 +10,7 @@ MAILER_EMAIL=
 MAILER_SECRET_KEY=
 PROD=false
  ```	
+
+ # Prisma
+ * ```npx prisma init --datasource-provider PostgreSQL```
+ * ```npx prisma migrate dev --name init```
