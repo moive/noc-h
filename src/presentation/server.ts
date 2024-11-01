@@ -1,5 +1,6 @@
 import { LogSeverityLevel } from "../domain/entities/log.entity";
 import { CheckService } from "../domain/use-cases/checks/check.service";
+import { CheckMultipleService } from "../domain/use-cases/checks/checkMultiple.service";
 import { SendEmailLogs } from "../domain/use-cases/email/send-email-logs";
 import { FileSystemDatasource } from "../infrastructure/datasources/file-system.datasource";
 import { MongoLogDatasource } from "../infrastructure/datasources/mongo-log.datasource";
@@ -8,9 +9,13 @@ import { LogRepositoryImplementation } from "../infrastructure/repositories/log.
 import { CronService } from "./cron/cron.service";
 import { EmailService } from "./email/email.service";
 
-const logRepository = new LogRepositoryImplementation(
-	// new FileSystemDatasource()
-	// new MongoLogDatasource()
+const fsLogRepository = new LogRepositoryImplementation(
+	new FileSystemDatasource()
+);
+const mongoLogRepository = new LogRepositoryImplementation(
+	new MongoLogDatasource()
+);
+const postgresLogRepository = new LogRepositoryImplementation(
 	new PostgresLogDatasource()
 );
 
@@ -31,15 +36,12 @@ export class Server {
 			// const date = new Date();
 			// console.log("5 second", date);
 			// const url = "https://localhost:3000";
-			const url = "https://googlesdf.com";
-			new CheckService(
-				logRepository,
+			const url = "https://google.com";
+			new CheckMultipleService(
+				[fsLogRepository, mongoLogRepository, postgresLogRepository],
 				() => console.log(`${url} is ok`),
 				(error) => console.log(error)
 			).execute(url);
 		});
-
-		const logs = await logRepository.getLogs(LogSeverityLevel.medium);
-		console.log("👉: ", logs);
 	}
 }
