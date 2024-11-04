@@ -2,7 +2,7 @@ import "dotenv/config";
 import { LogModel, MongoDatabase } from "./data/mongo";
 import { Server } from "./presentation/server";
 import { envs } from "./config/plugins/envs.plugin";
-import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "@prisma/client";
 
 (() => {
 	main();

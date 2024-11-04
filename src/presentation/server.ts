@@ -32,16 +32,16 @@ export class Server {
 		// 	"mvelasquezdeveloper@gmail.com"
 		// );
 
-		CronService.createJon("*/5 * * * * *", () => {
-			// const date = new Date();
-			// console.log("5 second", date);
-			// const url = "https://localhost:3000";
-			const url = "https://google.com";
-			new CheckMultipleService(
-				[fsLogRepository, mongoLogRepository, postgresLogRepository],
-				() => console.log(`${url} is ok`),
-				(error) => console.log(error)
-			).execute(url);
-		});
+		// CronService.createJon("*/5 * * * * *", () => {
+		// 	// const date = new Date();
+		// 	// console.log("5 second", date);
+		// 	// const url = "https://localhost:3000";
+		// 	const url = "https://google.com";
+		// 	new CheckMultipleService(
+		// 		[fsLogRepository, mongoLogRepository, postgresLogRepository],
+		// 		() => console.log(`${url} is ok`),
+		// 		(error) => console.log(error)
+		// 	).execute(url);
+		// });
 	}
 }
