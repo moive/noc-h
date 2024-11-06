@@ -32,7 +32,7 @@ export class Server {
 		// 	"mvelasquezdeveloper@gmail.com"
 		// );
 
-		// CronService.createJon("*/5 * * * * *", () => {
+		// CronService.createJob("*/5 * * * * *", () => {
 		// 	// const date = new Date();
 		// 	// console.log("5 second", date);
 		// 	// const url = "https://localhost:3000";
